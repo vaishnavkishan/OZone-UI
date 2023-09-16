@@ -1,11 +1,12 @@
 import React from "react";
 
 function Event({ event }) {
-  return;
+  return (
   <div className="blog-preview" key={event.id}>
     <h2>{event.title}</h2>
     <p>Written by {event.author}</p>
-  </div>;
+  </div>
+  );
 }
 
 export default Event;

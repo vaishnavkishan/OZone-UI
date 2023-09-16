@@ -1,0 +1,16 @@
+fileignoreconfig:
+- filename: src/Components/formik/FormikPasswordField.js
+  checksum: 48f3e0d1dfa1b659182170100dd1cb1f6435718a8287a7d5bb27389e0d5c3962
+- filename: src/Components/formik/FormikSelect.js
+  checksum: c43712af42506e4ebe99011306158380cd4bcf3f65ba644fc624d68343553b6f
+- filename: src/Components/user/UserProfile.spec.js
+  checksum: 3393a91956e7d656bc98f943ba6f196c4386263d3137f459287af1df44e9bff7
+- filename: src/helpers/authService.js
+  checksum: 7277e367483d47225e6b08391b59239ad377c2106121a25978cf4ef827791667
+- filename: src/helpers/authService.spec.js
+  checksum: d70add815b589e0f114943087babe74034f57fb5ce4e9e329bc8444cf6172997
+- filename: src/Components/signUp/hooks/useSignup.spec.js
+  checksum: d315130456c4ae611c30b7b68fde69e73797ab360e1b7c7c0a3b2b4566eaf00b
+- filename: src/Components/user/ChangePasswordDialog.js
+  checksum: a77d26f3c59de515be06bba90a0c5f90d28b0920db47c7a0bcdae82ff17c2160
+version: ""
