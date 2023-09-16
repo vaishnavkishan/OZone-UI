@@ -4,7 +4,7 @@
   width: 10.5rem;
   height: 8.5rem;
   border: 1px solid #ececec;
-  background-color: #8197a9;
+  background-color: #a981a6;
   color: white;
   border-radius: 12px;
   align-items: center;
@@ -25,4 +25,19 @@
 .expense-date__day {
   font-size: 1.5rem;
   font-weight: bold;
+}
+
+.event-time {
+  display: flex;
+  flex-direction: column;
+  width: 10.5rem;
+  height: 2.5rem;
+  border: 1px solid #ececec;
+  background-color: #a981a6;
+  color: white;
+  border-radius: 12px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0 0 0;
+  margin: 0 0 0 0;
 }

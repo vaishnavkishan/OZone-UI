@@ -7,18 +7,16 @@ export default function useFetch(url) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios
-      .get(url)
-      .then((response) => {
-        if (!response.ok) {
-          setData(null);
-          setIsLoading(false);
-          setError(response.statusText);
-        }
-        setData(response.data);
+    axios.get(url).then((response) => {
+      if (!response.ok) {
+        setData(null);
         setIsLoading(false);
-        setError(null);
-      });
+        setError(response.statusText);
+      }
+      setData(response.data);
+      setIsLoading(false);
+      setError(null);
+    });
   }, [url]);
 
   return { data, isLoading, error };

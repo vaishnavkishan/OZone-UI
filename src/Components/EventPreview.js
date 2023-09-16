@@ -20,9 +20,16 @@ import CardContent from "@mui/joy/CardContent";
 import Typography from "@mui/joy/Typography";
 import Sheet from "@mui/joy/Sheet";
 import Date from "./Date";
+import { useNavigate } from "react-router-dom";
 
 export default function EventPreview({ event, kind }) {
-  const isPastEvent = kind === "past";
+  const navigate = useNavigate();
+
+  const handleDetailsClick = () => {
+    navigate(`/event/${event.id}`);
+  };
+
+  const isPastEvent = false; //kind === "past";
   return (
     <Box
       sx={{
@@ -34,37 +41,6 @@ export default function EventPreview({ event, kind }) {
         borderRadius: "lg",
       }}
     >
-      {/* <Box
-        sx={{
-          position: "absolute",
-          display: "block",
-          width: "1px",
-          bgcolor: "warning.300",
-          left: "500px",
-          top: "-24px",
-          bottom: "-24px",
-          "&::before": {
-            top: "4px",
-            content: '"vertical"',
-            display: "block",
-            position: "absolute",
-            right: "0.5rem",
-            color: "text.tertiary",
-            fontSize: "sm",
-            fontWeight: "lg",
-          },
-          "&::after": {
-            top: "4px",
-            content: '"horizontal"',
-            display: "block",
-            position: "absolute",
-            left: "0.5rem",
-            color: "text.tertiary",
-            fontSize: "sm",
-            fontWeight: "lg",
-          },
-        }}
-      /> */}
       <Card
         orientation="horizontal"
         sx={{
@@ -106,11 +82,17 @@ export default function EventPreview({ event, kind }) {
           >
             <div>
               <Typography level="body-xs" fontWeight="lg">
-                Total slots available
+                {isPastEvent ? "" : "Capacity :"}
               </Typography>
-              <Typography fontWeight="lg">{event.capacity}</Typography>
+              <Typography fontWeight="lg">
+                {isPastEvent ? "" : event.capacity}
+              </Typography>
             </div>
-            <Button variant="solid" sx={{ backgroundColor: "#f1356d" }}>
+            <Button
+              variant="solid"
+              sx={{ backgroundColor: "#f1356d" }}
+              onClick={handleDetailsClick}
+            >
               Details
             </Button>
             <Button variant="solid" sx={{ backgroundColor: "#f1356d" }}>

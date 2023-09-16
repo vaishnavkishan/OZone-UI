@@ -2,18 +2,23 @@ import React from "react";
 import "./Date.css";
 
 function Date(props) {
-  //   const strdt = props.date;
-  //   const dt = new Date(strdt);
-  //   const month = props.Date.toLocaleString("en-US", { month: "long" });
-  //   const year = dt.year;
-  //   const day = dt.toLocaleString("en-US", { day: "2-digit" });
+  const dateParts = props.date.split("T")[0].split("-");
+  const timeParts = props.date.split("T")[1].split(":");
+  const time = timeParts[0] + ":" + timeParts[1];
+  const year = dateParts[0];
+  const month = dateParts[1];
+  const day = dateParts[2];
 
   return (
-    <div className="expense-date">
-      {/* <div className="expense-date__month">{month}</div> */}
-      {/* <div className="expense-date__year">{year}</div>
-      <div className="expense-date__day">{day}</div> */}
-      <div className="expense-date__month">{props.date}</div>
+    <div className="date">
+      <div className="expense-date">
+        <div className="expense-date__year">{year}</div>
+        <div className="expense-date__day">{day}</div>
+        <div className="expense-date__month">{month}</div>
+      </div>
+      <div className="event-time">
+        <div className="et">{time}</div>
+      </div>
     </div>
   );
 }
