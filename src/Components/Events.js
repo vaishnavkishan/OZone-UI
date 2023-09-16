@@ -6,17 +6,13 @@ function Events({ kind }) {
     data: events,
     isLoading,
     error,
-  } = useFetch(`https://localhost:7204/Events?kind=${kind}`);
-
-  const values = fetch("https://jsonplaceholder.typicode.com/todos/1")
-    .then((response) => response.json())
-    .then((json) => console.log(json));
+  } = useFetch(`http://localhost:5160/Events?kind=${kind}`);
 
   return (
     <div className="home">
       {error && <div>{error}</div>}
       {isLoading && <p>Loading...</p>}
-      {events && <EventList events={events} title={`All ${kind} events`} />}
+      {events && <EventList events={events} kind={kind} />}
     </div>
   );
 }
