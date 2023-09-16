@@ -1,6 +1,6 @@
-import Navbar from "./Navbar";
-import Events from "./Events";
-import Create from "./Create";
+import Navbar from "./Components/Navbar";
+import Events from "./Components/Events";
+import Create from "./Components/Create";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
