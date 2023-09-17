@@ -24,7 +24,7 @@ export default {
     return response.data;
   },
   upload: async (payload) => {
-    const response = await apiService.post("Artifacts/uploadq", payload);
+    const response = await apiService.post("Artifacts/upload", payload);
     return response.data;
   },
   download: async (id) => {
