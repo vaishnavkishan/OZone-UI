@@ -11,10 +11,10 @@ function Date(props) {
 
   return (
     <div className="date">
-      <div className="expense-date">
-        <div className="expense-date__year">{year}</div>
-        <div className="expense-date__day">{day}</div>
-        <div className="expense-date__month">{month}</div>
+      <div className="event-date">
+        <div className="even-date__year">{year}</div>
+        <div className="event-date__day">{day}</div>
+        <div className="event-date__month">{month}</div>
       </div>
       <div className="event-time">
         <div className="et">{time}</div>

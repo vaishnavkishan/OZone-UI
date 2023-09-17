@@ -29,7 +29,7 @@ export default function EventPreview({ event, kind }) {
     navigate(`/event/${event.id}`);
   };
 
-  const isPastEvent = false; //kind === "past";
+  const isPastEvent = kind === "past";
   return (
     <Box
       sx={{

@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import useFetch from "../Hooks/useFetch";
 import Button from "@mui/material/Button";
 import {
@@ -13,14 +13,18 @@ import {
   Paper,
   Box,
   TextField,
+  Alert,
+  AlertTitle,
 } from "@mui/material";
 
 import { useState } from "react";
 import RegistrationForm from "./Registrationform";
 import eventService from "./EventService";
+import InputFileUpload from "./UploadButton";
+import { saveAs } from "file-saver";
 
 function EventDetails() {
-  ///
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [nameError, setNameError] = useState("");
@@ -83,11 +87,28 @@ function EventDetails() {
     };
 
     const response = await eventService.subscribe(subscriptionData);
-    console.log("response from create event: ");
     console.log(response);
+    if (response) {
+      alert("Registered successfully");
+      navigate("/");
+    }
   };
 
-  ////
+  const handleDownload = () => {
+    const download = async () => {
+      console.log(eventId);
+      const response = await eventService.download(eventId);
+      console.log(response.Headers);
+      if (response) {
+        const blob = new Blob([response.data], {
+          type: "application/pdf",
+        });
+        saveAs(blob, "x.pdf");
+        console.log("downloaded");
+      }
+    };
+    download();
+  };
 
   const id = eventId;
   const {
@@ -176,13 +197,26 @@ function EventDetails() {
           </Table>
         </TableContainer>
         <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
-          <Button
-            variant="solid"
-            sx={{ backgroundColor: "#f1356d" }}
-            onClick={handleOpen}
-          >
-            Register
-          </Button>
+          {new Date(event.date) >= new Date() ? (
+            <Button
+              variant="solid"
+              sx={{ backgroundColor: "#f1356d" }}
+              onClick={handleOpen}
+            >
+              Register
+            </Button>
+          ) : (
+            <>
+              <InputFileUpload eventId={event.id} />
+              <Button
+                variant="solid"
+                sx={{ backgroundColor: "#f1356d", ml: 3 }}
+                onClick={handleDownload}
+              >
+                Download
+              </Button>
+            </>
+          )}
           <RegistrationForm
             open={open}
             onClose={handleClose}

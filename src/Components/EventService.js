@@ -22,5 +22,13 @@ export default {
   suggestEvent: async (payload) => {
     const response = await apiService.post("events/suggest", payload);
     return response.data;
-  }
+  },
+  upload: async (payload) => {
+    const response = await apiService.post("Artifacts/uploadq", payload);
+    return response.data;
+  },
+  download: async (id) => {
+    const response = await apiService.get(`Artifacts/download/${id}`);
+    return response.data;
+  },
 };
