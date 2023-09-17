@@ -17,14 +17,11 @@ function App() {
               path="/"
               element={<Navigate to="/events/upcoming" />}
             ></Route>
-            <Route
-              path="/events/upcoming"
-              element={<Events kind="upcoming" />}
-            ></Route>
+            <Route path="/events/upcoming" element={<Events />}></Route>
             <Route path="/events/past" element={<Events kind="past" />}></Route>
-            <Route path="/events/create" element={<CreateEvent />}></Route>
-            <Route path="/event/:Id" element={<EventDetails />}></Route>
-            <Route path="*" element={<Navigate to="/" />} />
+            {/* <Route path="/events/create" element={<Create />}></Route> */}
+            {/* <Route path="/event/:Id" element={<EventDetails />}></Route> */}
+            {/* <Route path="*" element={<Navigate to="/" />} /> */}
           </Routes>
         </div>
       </div>

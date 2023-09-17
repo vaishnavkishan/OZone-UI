@@ -11,6 +11,9 @@ function EventList({ events, kind }) {
     var lowerCase = e.target.value.toLowerCase();
     setInputText(lowerCase);
   };
+  useEffect(() => {
+    setFilteredEvents([...events]);
+  }, [events]);
 
   const [filteredEvents, setFilteredEvents] = useState([...events]);
 
