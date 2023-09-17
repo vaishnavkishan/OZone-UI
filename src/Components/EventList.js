@@ -42,6 +42,7 @@ function EventList({ events, kind }) {
           onChange={inputHandler}
           fullWidth
           label="Search"
+          sx={{ width: "108%" }}
         />
       </div>
 
