@@ -19,4 +19,8 @@ export default {
     const response = await apiService.post("Subscriptions", payload);
     return response.data;
   },
+  suggestEvent: async (payload) => {
+    const response = await apiService.post("events/suggest", payload);
+    return response.data;
+  }
 };

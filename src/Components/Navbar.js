@@ -7,6 +7,7 @@ function Navbar() {
     <nav className="navbar">
       <h1>The OZone Event Wall</h1>
       <div className="links">
+        <Link to="/events/suggest">Suggest an event!</Link>
         <Link to="/events/upcoming">Upcoming</Link>
         <Link to="/events/past">Past</Link>
         {isAllowedToCreateEvent && (

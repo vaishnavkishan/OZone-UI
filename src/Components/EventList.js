@@ -4,6 +4,7 @@ import Searchbar from "./Searchbar";
 import TextField from "@mui/material/TextField";
 import { useState, useEffect, useLayoutEffect } from "react";
 import EventDetails from "./EventDetails";
+import { Button } from "@mui/material";
 
 function EventList({ events, kind }) {
   const [inputText, setInputText] = useState("");
