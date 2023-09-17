@@ -1,9 +1,9 @@
 import Navbar from "./Components/Navbar";
 import Events from "./Components/Events";
-import Create from "./Components/Create";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import EventDetails from "./Components/EventDetails";
 import { Navigate } from "react-router-dom";
+import CreateEvent from "./Components/CreateEvent";
 
 function App() {
   return (
@@ -22,7 +22,7 @@ function App() {
               element={<Events kind="upcoming" />}
             ></Route>
             <Route path="/events/past" element={<Events kind="past" />}></Route>
-            <Route path="/events/create" element={<Create />}></Route>
+            <Route path="/events/create" element={<CreateEvent />}></Route>
             <Route path="/event/:Id" element={<EventDetails />}></Route>
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
