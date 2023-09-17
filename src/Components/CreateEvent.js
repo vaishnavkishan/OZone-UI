@@ -88,7 +88,7 @@ const CreateEvent = () => {
     console.log(expenseData);
 
     try {
-      const response = await eventService.create(expenseData);
+      const response = await eventService.create([expenseData]);
       console.log("response from create event: ");
       console.log(response);
       setShowSuccessAlert(true);
