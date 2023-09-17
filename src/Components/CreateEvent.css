@@ -52,9 +52,9 @@
     color: white;
     border-radius: 12px;
     margin-right: 1rem;
-    font-weight: 700;
+    font-weight: 200;
     width: 15rem;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
 }
 
 .new-expense .button1:hover,
@@ -97,4 +97,22 @@
 .backdrop {
     /* filter: blur(0.5px); */
     pointer-events: none;
+}
+
+.create-event {
+    /* position: absolute; */
+    display: flex;
+    /* align: ; */
+    justify-content: space-around;
+    /* background-color: #220131; */
+    gap: 50px;
+}
+
+.new-expense {
+    width: 39.5%;
+    position: absolute;
+    float: right;
+    left: 100px;
+    top: 50px;
+    margin-top: 5rem;
 }
