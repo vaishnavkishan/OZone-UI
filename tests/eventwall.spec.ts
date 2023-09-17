@@ -54,7 +54,7 @@ test('validate create event page is not working when all details are not provide
   await page.getByRole('link', { name: 'Create Event' }).click();
   await page.locator('div').filter({ hasText: /^Name$/ }).getByRole('textbox').click();
   await page.getByRole('button', { name: 'Create' }).click();
-  expect(page.getByText('Event created successfully!')).not.toBeVisible();
+  await expect(page.getByText('Event created successfully!')).not.toBeVisible();
 });
 
 test('validate that past evnts page is displayed with events', async ({ page }) => {
@@ -63,11 +63,11 @@ test('validate that past evnts page is displayed with events', async ({ page }) 
   await page.getByRole('link', { name: 'Past' }).click();
   await expect(page.getByRole('heading', { name: 'All past events' })).toBeVisible();
   
-  expect(page.getByLabel('Search')).toBeVisible();
+  await expect(page.getByLabel('Search')).toBeVisible();
   //await page.getByText('2023160906:35First EventSpeaker: ozoneDetails: This is a demo topic, any...Capac').click();
-  expect(page.locator('.MuiButton-root').first()).toBeVisible();
-  expect(page.locator('button:nth-child(3)').first()).toBeVisible();
-  expect(page.locator('div:nth-child(4) > .MuiCard-root > .MuiCardContent-root > .MuiSheet-root > button:nth-child(3)')).toBeVisible();
+  await expect(page.locator('.MuiButton-root').first()).toBeVisible();
+  await expect(page.locator('button:nth-child(3)').first()).toBeVisible();
+  await expect(page.locator('div:nth-child(4) > .MuiCard-root > .MuiCardContent-root > .MuiSheet-root > button:nth-child(3)')).toBeVisible();
 });
 
 test('validate that upcoming page is displayed with events', async ({ page }) => {
