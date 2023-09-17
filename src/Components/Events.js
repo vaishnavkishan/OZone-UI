@@ -8,7 +8,7 @@ function Events() {
   // const { kind } = useParams();
   const [eventsState, setEventsState] = useState([]);
   const location = useLocation();
-  const [kind, setKind] = useState();
+  const [kind, setKind] = useState("upcoming");
   console.log(kind);
 
   useEffect(() => {
@@ -32,7 +32,6 @@ function Events() {
       setEventsState(events);
     }
   }, [events]);
-  // console.log(events);
 
   return (
     <div className="home">
