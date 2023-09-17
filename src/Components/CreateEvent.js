@@ -3,11 +3,14 @@ import "./CreateEvent.css";
 import eventService from "./EventService";
 import { useNavigate } from "react-router-dom";
 import Alert from "@mui/material/Alert";
+import SuggestionWindow from "./SuggestionsWindow";
 
 const CreateEvent = () => {
   const navigate = useNavigate();
   const [showSuccessAlert, setShowSuccessAlert] = useState(false);
   const [showFailureAlert, setShowFailureAlert] = useState(false);
+  const [suggestionData, setSuggestionData] = useState({});
+  const [enableSuggestions, setEnableSuggestions] = useState(false);
   const [enteredName, setEnteredName] = useState("");
   const [enteredDate, setEnteredDate] = useState();
   const [enteredMode, setEnteredMode] = useState("0");
@@ -23,8 +26,28 @@ const CreateEvent = () => {
   const [enteredType, setEnteredType] = useState("0");
   const [enteredTags, setEnteredTags] = useState("");
 
+  const updateEnableSuggestion = () => {
+    console.log("inside update suggestion");
+    console.log(enteredName);
+    console.log(enteredTopic);
+    console.log(enteredEventDetails);
+
+    if (
+      enteredName !== "" &&
+      enteredTopic !== "" &&
+      enteredEventDetails !== ""
+    ) {
+      console.log("enabling suggestion");
+      setEnableSuggestions(true);
+    } else {
+      setEnableSuggestions(false);
+    }
+  };
+
   const nameChangeHandler = (event) => {
     setEnteredName(event.target.value);
+    // console.log(enteredName);
+    updateEnableSuggestion();
   };
   const dateChangeHandler = (event) => {
     setEnteredDate(event.target.value);
@@ -37,12 +60,16 @@ const CreateEvent = () => {
   };
   const topicChangeHandler = (event) => {
     setEnteredTopic(event.target.value);
+    // console.log(enteredTopic);
+    updateEnableSuggestion();
   };
   const speakersChangeHandler = (event) => {
     setEnteredSpeakers(event.target.value);
   };
   const detailsChangeHandler = (event) => {
     setEnteredEventDetails(event.target.value);
+    // console.log(enteredTopic);
+    updateEnableSuggestion();
   };
   const pocChangeHandler = (event) => {
     setEnteredPoc(event.target.value);
@@ -64,6 +91,22 @@ const CreateEvent = () => {
   };
   const tagsChangeHandler = (event) => {
     setEnteredTags(event.target.value);
+  };
+  const suggestionsChangeHandler = async () => {
+    console.log("clicked");
+    const improveTexData = {
+      name: enteredName,
+      community: enteredTopic,
+      Description: enteredEventDetails,
+    };
+    try {
+      const response = await eventService.getSuggestions(improveTexData);
+      console.log("response from text suggestion: ");
+      console.log(response);
+      setSuggestionData(response);
+    } catch {
+      console.log("text suggestions failed");
+    }
   };
 
   const submitHandler = async (event) => {
@@ -138,8 +181,8 @@ const CreateEvent = () => {
                 onChange={typeChangeHandler}
                 required
               >
-                <option value="0">Online</option>
-                <option value="1">Offline</option>
+                <option value="1">External</option>
+                <option value="0">Internal</option>
               </select>
             </div>
             <div className="new-expense__control">
@@ -173,8 +216,8 @@ const CreateEvent = () => {
                 onChange={modeChangeHandler}
                 required
               >
-                <option value="0">Online</option>
-                <option value="1">Offline</option>
+                <option value="1">Online</option>
+                <option value="0">Offline</option>
               </select>
             </div>
             <div className="new-expense__control">
@@ -213,7 +256,6 @@ const CreateEvent = () => {
                 required
               />
             </div>
-
             <div className="new-expense__control">
               <label>Person Of Contact</label>
               <input
@@ -277,7 +319,7 @@ const CreateEvent = () => {
         </Alert>
       )}
       {showFailureAlert && (
-        <Alert 
+        <Alert
           className="alert error"
           onClose={() => {
             setShowFailureAlert(false);
@@ -287,6 +329,11 @@ const CreateEvent = () => {
           Error occurred while creating the event!
         </Alert>
       )}
+      <SuggestionWindow
+        data={suggestionData}
+        onClick={suggestionsChangeHandler}
+        disable={!enableSuggestions}
+      ></SuggestionWindow>
     </div>
   );
 };

@@ -6,8 +6,8 @@ export default {
     return response.data;
   },
 
-  getSuggestions: async (date) => {
-    const response = await apiService.get(`path=${date}`);
+  getSuggestions: async (payload) => {
+    const response = await apiService.post("events/improve", payload);
     return response.data;
   },
 
