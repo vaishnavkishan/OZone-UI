@@ -26,10 +26,10 @@ const SuggestionWindow = (props) => {
         <p className="title">Event Details </p>
         <p className="description">{props.data.description}</p>
       </div>
-      <div className="details">
+      {/* <div className="details">
         <p className="title">Full Response </p>
         <p className="description">{props.data.fullResponse}</p>
-      </div>
+      </div> */}
     </div>
   );
 };

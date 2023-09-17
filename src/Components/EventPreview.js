@@ -95,18 +95,14 @@ export default function EventPreview({ event, kind }) {
             >
               Details
             </Button>
-            <Button variant="solid" sx={{ backgroundColor: "#f1356d" }}>
+            <Button
+              variant="solid"
+              sx={{ backgroundColor: "#f1356d" }}
+              style={{ display: "none" }}
+            >
               {isPastEvent ? "Download Artifacts" : "Register"}
             </Button>
           </Sheet>
-          {/* <Box sx={{ display: "flex", gap: 1.5, "& > button": { flex: 1 } }}>
-            <Button variant="outlined" color="neutral">
-              Chat
-            </Button>
-            <Button variant="solid" color="primary">
-              Follow
-            </Button>
-          </Box> */}
         </CardContent>
       </Card>
     </Box>
