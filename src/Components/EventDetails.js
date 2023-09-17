@@ -17,6 +17,7 @@ import {
 
 import { useState } from "react";
 import RegistrationForm from "./Registrationform";
+import eventService from "./EventService";
 
 function EventDetails() {
   ///
@@ -74,9 +75,16 @@ function EventDetails() {
     setOpen(false);
   };
 
-  const handleRegistration = ({ name, email, eventId }) => {
-    console.log(name, email, eventId + "  from event details");
-    // TODO: Submit the form data to the server
+  const handleRegistration = async ({ name, email, eventId }) => {
+    const subscriptionData = {
+      eventId: eventId,
+      email: email,
+      name: name,
+    };
+
+    const response = await eventService.subscribe(subscriptionData);
+    console.log("response from create event: ");
+    console.log(response);
   };
 
   ////

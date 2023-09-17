@@ -77,7 +77,7 @@ function RegistrationForm({ open, onClose, onSubmit, eventId }) {
       <DialogTitle>Register for the event</DialogTitle>
       <DialogContent>
         <form onSubmit={handleSubmit}>
-          <TextField
+          {/* <TextField
             id="Id"
             name="Id"
             label="Id"
@@ -85,7 +85,7 @@ function RegistrationForm({ open, onClose, onSubmit, eventId }) {
             fullWidth
             margin="normal"
             value={eventId}
-          />
+          /> */}
           <TextField
             id="name"
             name="name"
