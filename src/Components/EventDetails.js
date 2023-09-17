@@ -122,10 +122,12 @@ function EventDetails() {
               </TableRow>
               <TableRow>
                 <TableCell>Mode</TableCell>
-                <TableCell>{event.mode}</TableCell>
+                <TableCell>{event.mode == 0 ? "Offline" : "Online"}</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell>Model Details</TableCell>
+                <TableCell>
+                  {event.mode == 0 ? "Venue" : " Joining Link"}
+                </TableCell>
                 <TableCell>{event.modelDetails}</TableCell>
               </TableRow>
               <TableRow>
