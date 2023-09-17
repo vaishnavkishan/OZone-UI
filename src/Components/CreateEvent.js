@@ -4,6 +4,7 @@ import eventService from "./EventService";
 import { useNavigate } from "react-router-dom";
 import Alert from "@mui/material/Alert";
 import SuggestionWindow from "./SuggestionsWindow";
+import zIndex from "@mui/material/styles/zIndex";
 
 const CreateEvent = () => {
   const navigate = useNavigate();
@@ -250,7 +251,7 @@ const CreateEvent = () => {
             <div className="new-expense__control">
               <label>Speaker</label>
               <input
-                type="email"
+                type="text"
                 value={enteredSpeakers}
                 onChange={speakersChangeHandler}
                 required
@@ -314,6 +315,7 @@ const CreateEvent = () => {
             setShowSuccessAlert(false);
             navigate("/events/upcoming");
           }}
+          style={{ zIndex: 2 }}
         >
           Event created successfully!
         </Alert>
