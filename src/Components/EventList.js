@@ -1,10 +1,6 @@
-import { Padding } from "@mui/icons-material";
 import EventPreview from "./EventPreview";
-import Searchbar from "./Searchbar";
 import TextField from "@mui/material/TextField";
 import { useState, useEffect, useLayoutEffect } from "react";
-import EventDetails from "./EventDetails";
-import { Button } from "@mui/material";
 
 function EventList({ events, kind }) {
   const [inputText, setInputText] = useState("");
@@ -42,7 +38,7 @@ function EventList({ events, kind }) {
           onChange={inputHandler}
           fullWidth
           label="Search"
-          sx={{ width: "108%" }}
+          sx={{ width: "105%" }}
         />
       </div>
 
