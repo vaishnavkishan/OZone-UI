@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import useFetch from "../Hooks/useFetch";
 import Button from "@mui/material/Button";
 import {
@@ -24,6 +24,7 @@ function EventDetails() {
   const [email, setEmail] = useState("");
   const [nameError, setNameError] = useState("");
   const [emailError, setEmailError] = useState("");
+  const eventId = useLocation().pathname.split("/")[2];
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -73,45 +74,27 @@ function EventDetails() {
     setOpen(false);
   };
 
-  const handleRegistration = (formData) => {
-    console.log(formData.name);
+  const handleRegistration = ({ name, email, eventId }) => {
+    console.log(name, email, eventId + "  from event details");
     // TODO: Submit the form data to the server
   };
 
   ////
-  const { eventId } = useParams();
-  //   const id = eventId;
-  //   const {
-  //     data: event,
-  //     isLoading,
-  //     error,
-  //   } = useFetch(`http://localhost:5160/Events/${id}`);
 
-  const event = {
-    id: "9a17cb35-3f68-4ea3-a836-7840474a87b2",
-    name: "First Event",
-    date: "2023-09-16T06:35:25.471",
-    mode: 0,
-    modelDetails: "joining info",
-    topic: "Demo topic",
-    speakers: "ozone",
-    details: "This is a demo topic, anything will be discussed here",
-    personOfContact: "kishan.vaishnav@thoughtworks.com",
-    rules: "Everyone must come in party wear",
-    deadline: "2023-09-18T06:35:25.471",
-    community: "fun@thoguhtworks.com",
-    capacity: 123,
-    type: 0,
-    tags: "fun, devs",
-  };
+  const id = eventId;
+  const {
+    data: event,
+    isLoading,
+    error,
+  } = useFetch(`http://localhost:5160/Events/${id}`);
 
-  //   if (error) {
-  //     return <div className="error">{error}</div>;
-  //   }
+  if (error) {
+    return <div className="error">{error}</div>;
+  }
 
-  //   if (isLoading) {
-  //     return <div className="loading">Loading...</div>;
-  //   }
+  if (isLoading) {
+    return <div className="loading">Loading...</div>;
+  }
   return (
     <div>
       <Paper sx={{ p: 2 }}>
@@ -119,6 +102,10 @@ function EventDetails() {
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 500 }} aria-label="event details table">
             <TableBody>
+              <TableRow>
+                <TableCell>Id</TableCell>
+                <TableCell>{event.id}</TableCell>
+              </TableRow>
               <TableRow>
                 <TableCell>Date</TableCell>
                 <TableCell>
@@ -189,6 +176,7 @@ function EventDetails() {
           <RegistrationForm
             open={open}
             onClose={handleClose}
+            eventId={eventId}
             onSubmit={handleRegistration}
           />
         </Box>

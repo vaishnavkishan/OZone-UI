@@ -19,19 +19,19 @@ const validationSchema = yup.object({
     .required("Email is required"),
 });
 
-function RegistrationForm({ open, onClose, onSubmit }) {
+function RegistrationForm({ open, onClose, onSubmit, eventId }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [Id, setId] = useState({ eventId });
   const [nameError, setNameError] = useState("");
   const [emailError, setEmailError] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
     const isValid = validateForm();
 
     if (isValid) {
-      onSubmit({ name, email });
+      onSubmit({ name, email, eventId });
       handleClose();
     }
   };
@@ -62,6 +62,7 @@ function RegistrationForm({ open, onClose, onSubmit }) {
   const resetForm = () => {
     setName("");
     setEmail("");
+    setId("");
     setNameError("");
     setEmailError("");
   };
@@ -76,6 +77,15 @@ function RegistrationForm({ open, onClose, onSubmit }) {
       <DialogTitle>Register for the event</DialogTitle>
       <DialogContent>
         <form onSubmit={handleSubmit}>
+          <TextField
+            id="Id"
+            name="Id"
+            label="Id"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            value={eventId}
+          />
           <TextField
             id="name"
             name="name"
@@ -112,7 +122,7 @@ function RegistrationForm({ open, onClose, onSubmit }) {
           type="submit"
           onClick={handleSubmit}
         >
-          Register
+          Sumit Request
         </Button>
       </DialogActions>
     </Dialog>
