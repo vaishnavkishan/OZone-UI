@@ -1,3 +1,16 @@
+🎊 🎉 💻 😎 **Hackathon Code-A-Thon winning project** 😎 💻 🎉 🎊
+
+# OZone Event Wall
+This project is created as part of Hackathon Code-A-Thon.
+
+A simple portal to manage Events.
+
+### Team
+Kishan, Venu, Theja, Shanthosh, Srini, Raju
+
+# Backend API repository
+https://github.com/vaishnavkishan/OZone-API.git
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
