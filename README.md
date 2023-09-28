@@ -8,7 +8,7 @@ A simple portal to manage Events.
 ### Team
 Kishan, Venu, Theja, Shanthosh, Srini, Raju
 
-# Backend API repository
+### Backend API repository
 https://github.com/vaishnavkishan/OZone-API.git
 
 # Getting Started with Create React App
